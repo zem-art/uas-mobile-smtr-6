@@ -1,3 +1,4 @@
+import { Colors } from '@/utils/Colors';
 import { useRouter } from 'expo-router';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
@@ -7,9 +8,7 @@ export default function HomePage() {
   return (
     <View style={styles.container}>
       <Image
-        source={{
-          uri: 'https://upload.wikimedia.org/wikipedia/commons/f/f2/Lambang_Kota_Semarang.png',
-        }}
+        source={require('@/assets/images/lambang_Kota_Semarang.png')}
         style={styles.logo}
         resizeMode="contain"
       />
@@ -18,10 +17,10 @@ export default function HomePage() {
         Semarang adalah ibu kota Provinsi Jawa Tengah. Kota ini dikenal dengan Kota Lama, Lawang Sewu, dan kuliner lumpia.
       </Text>
       <View style={styles.buttonGroup}>
-        <Pressable style={styles.buttonBlue} onPress={() => router.push('/eksplor/infrastruktur')}>
+        <Pressable style={styles.buttonBlue} onPress={() => router.push('/eksplor/profile')}>
           <Text style={styles.buttonText}>Lihat Detail</Text>
         </Pressable>
-        <Pressable style={styles.buttonGreen} onPress={() => router.push('/eksplor/budaya')}>
+        <Pressable style={styles.buttonGreen} onPress={() => router.push('/eksplor')}>
           <Text style={styles.buttonText}>Eksplor Destinasi</Text>
         </Pressable>
       </View>
@@ -60,13 +59,13 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   buttonBlue: {
-    backgroundColor: '#2563EB',
+    backgroundColor: Colors.primary,
     paddingVertical: 10,
     paddingHorizontal: 16,
     borderRadius: 8,
   },
   buttonGreen: {
-    backgroundColor: '#22C55E',
+    backgroundColor: Colors.blue,
     paddingVertical: 10,
     paddingHorizontal: 16,
     borderRadius: 8,
