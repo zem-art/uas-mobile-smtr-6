@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 export default function EksplorPage() {
   const router = useRouter();
-  const navTo = (path: string) => () => router.push(`eksplor/${path}`);
+  const navTo = (path: string) => () => router.push(`/eksplor/${path}`);
 
   return (
     <View style={styles.container}>
