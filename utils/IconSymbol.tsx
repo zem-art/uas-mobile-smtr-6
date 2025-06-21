@@ -37,12 +37,14 @@ const IconMap = {
   FontAwesome6: {
     clock: 'clock',
     history: 'history',
+    wpexplorer : "wpexplorer"
   },
   Feather: {
     settings: 'settings',
     plus: 'plus',
     filter: 'filter',
     book_open : "book-open",
+    info : "info"
   },
   Entypo : {
     lightMode : 'light-up'

@@ -1,8 +1,17 @@
 import { useRouter } from 'expo-router';
-import { Image, Pressable, ScrollView, StyleSheet, Text } from 'react-native';
+import { Image, Platform, Pressable, ScrollView, StyleSheet, Text } from 'react-native';
+import MapView, { Marker } from "react-native-maps";
 
 export default function ProfilPage() {
   const router = useRouter();
+
+  // Koordinat Kota Semarang
+  const semarangRegion = {
+    latitude: -6.966667,
+    longitude: 110.416667,
+    latitudeDelta: 0.05,
+    longitudeDelta: 0.05,
+  };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -53,6 +62,24 @@ export default function ProfilPage() {
       <Text style={styles.paragraph}>
         Semarang juga merupakan pusat pendidikan dengan adanya kampus ternama seperti Universitas Diponegoro (UNDIP), Universitas Negeri Semarang (UNNES), dan Politeknik Negeri Semarang (Polines). Dalam bidang ekonomi, Semarang dikenal sebagai kota pelabuhan dan industri yang terus tumbuh.
       </Text>
+
+      <Text style={styles.sectionTitle}>Letak Geografis</Text>
+
+      <MapView
+        style={styles.map}
+        initialRegion={semarangRegion}
+        focusable={true}
+        provider={Platform.OS === "ios" ? "google" : undefined} // Gunakan Apple Maps di iOS, default Android
+      >
+        <Marker
+          coordinate={{
+            latitude: -6.966667,
+            longitude: 110.416667,
+          }}
+          title="Kota Semarang"
+          description="Ibu Kota Jawa Tengah"
+        />
+      </MapView>
 
       <Pressable onPress={() => router.back()} style={styles.buttonBack}>
         <Text style={styles.buttonText}>← Kembali</Text>
@@ -110,5 +137,17 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#fff',
     fontWeight: 'bold',
+  },
+  map: {
+    marginTop : 20,
+    width: "100%",
+    height: 200,
+    borderRadius: 10,
+    marginBottom: 24,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    elevation: 5,
   },
 });

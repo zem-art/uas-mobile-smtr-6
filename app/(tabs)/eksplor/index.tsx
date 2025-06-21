@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.background,
   },
   title: {
     fontSize: 24,
@@ -76,11 +76,11 @@ const styles = StyleSheet.create({
   cardWrapper: {
     width: '48%',
     aspectRatio: 1,
-    marginBottom: 16,
+    marginBottom: 25,
     borderRadius: 12,
     overflow: 'hidden',
     elevation: 4,
-    backgroundColor: '#ccc',
+    backgroundColor: Colors.drakGray,
   },
   card: {
     flex: 1,
