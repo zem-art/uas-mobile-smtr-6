@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     lineHeight: 22,
   },
   buttonBack: {
-    marginTop: 32,
+    marginTop: 25,
     backgroundColor: '#2563EB',
     paddingHorizontal: 16,
     paddingVertical: 10,
