@@ -7,6 +7,7 @@
     "email": "support@boba.com",
     "url": "https://mzaimzufar.my.id"
   },
+  "packageManager": "pnpm@10.11.1",
   "scripts": {
     "prebuild" : "node scripts/use-npm.js",
     "start": "expo start",
@@ -16,11 +17,12 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "expo lint",
+    "build": "npm run prebuild && eas build",
     "build:development": "eas build --platform android --profile development --clear-cache",
     "build:preview": "eas build --platform android --profile preview --clear-cache",
     "create:branch:preview": "eas branch:create preview",
     "create:branch:prod": "eas branch:create production",
-    "delete:module": "rm -rf node_modules pnpm-lock.yaml"
+    "delete:module": "rm -rf node_modules pnpm-lock.yaml package-lock.json"
   },
   "dependencies": {
     "@babel/runtime": "^7.27.6",

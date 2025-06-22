@@ -6,13 +6,26 @@
   "build": {
     "development": {
       "developmentClient": true,
-      "distribution": "internal"
+      "node": "18.x",
+      "distribution": "internal",
+      "env": {
+        "EAS_BUILD_NPM": "true",
+        "COREPACK_ENABLE": "0"
+      }
     },
     "preview": {
       "distribution": "internal",
+      "env": {
+        "EAS_BUILD_NPM": "true",
+        "COREPACK_ENABLE": "0"
+      }
     },
     "production": {
-      "autoIncrement": true
+      "autoIncrement": true,
+      "env": {
+        "EAS_BUILD_NPM": "true",
+        "COREPACK_ENABLE": "0"
+      }
     }
   },
   "submit": {
