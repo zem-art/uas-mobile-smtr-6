@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "my-app-profile",
-    "slug": "my-app-profile",
+    "slug": "uas-mobile-apps",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -38,6 +38,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "c8e8ca37-ec40-4243-b7bf-e44d1cf0ade7"
+      }
+    },
+    "owner": "learning_apps"
   }
 }
