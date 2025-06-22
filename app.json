@@ -26,6 +26,7 @@
     },
     "plugins": [
       "expo-router",
+      "expo-sqlite",
       [
         "expo-splash-screen",
         {
@@ -35,7 +36,7 @@
           "backgroundColor": "#ffffff"
         }
       ],
-      "expo-sqlite"
+      ["react-native-maps"]
     ],
     "experiments": {
       "typedRoutes": true
