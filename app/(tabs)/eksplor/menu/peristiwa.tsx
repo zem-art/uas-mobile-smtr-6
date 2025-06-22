@@ -1,6 +1,32 @@
-// app/eksplor/peristiwa.tsx
 import { router } from "expo-router";
-import { Pressable, ScrollView, StyleSheet, Text } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+
+const peristiwaSemarang = [
+  {
+    name: "Pertempuran Lima Hari di Semarang (15–20 Oktober 1945)",
+    description: "Salah satu peristiwa heroik yang terjadi setelah Proklamasi Kemerdekaan. Rakyat Semarang bersama pemuda dan tentara Indonesia bertempur melawan tentara Jepang yang masih ada di kota. Pertempuran ini dipicu oleh penangkapan dan pembunuhan dr. Kariadi serta pengambilalihan senjata di berbagai tempat. Pertempuran berlangsung sengit selama lima hari dan dikenang sebagai simbol keberanian rakyat Semarang."
+  },
+  {
+    name: "Pemberontakan PKI 1948 dan Dampaknya di Semarang",
+    description: "Meskipun pusat pemberontakan berada di Madiun, dampak dari gerakan ini turut terasa di Semarang. Pemerintah memperketat pengawasan terhadap kelompok-kelompok politik dan ideologi ekstrem. Semarang menjadi salah satu basis penting dalam pengendalian stabilitas politik di Jawa Tengah."
+  },
+  {
+    name: "Demonstrasi Mahasiswa 1998",
+    description: "Seperti kota besar lainnya, Semarang turut menjadi lokasi demonstrasi mahasiswa menuntut reformasi dan turunnya Presiden Soeharto. Aksi-aksi damai dilakukan oleh mahasiswa UNDIP, UNNES, dan kampus-kampus lain, yang menyuarakan demokratisasi dan kebebasan berpendapat."
+  },
+  {
+    name: "Banjir Rob Tahunan",
+    description: "Banjir rob (air laut pasang) merupakan fenomena tahunan yang cukup sering melanda wilayah pesisir Semarang, terutama di kawasan Kaligawe, Tanjung Mas, dan Genuk. Pemerintah telah melakukan berbagai upaya penanganan seperti pembangunan tanggul laut dan sistem pompa air."
+  },
+  {
+    name: "Rehabilitasi Kota Lama dan Revitalisasi Warisan Sejarah",
+    description: "Dalam beberapa tahun terakhir, pemerintah kota dan pusat melakukan proyek besar untuk menghidupkan kembali Kota Lama Semarang. Proyek ini mencakup perbaikan bangunan tua, peningkatan fasilitas pariwisata, serta penataan kawasan agar menjadi ikon sejarah dan budaya."
+  },
+  {
+    name: "Peresmian Masjid Agung Jawa Tengah (2006)",
+    description: "Masjid ini menjadi landmark religius sekaligus simbol toleransi dan kebangkitan spiritual masyarakat Semarang. Masjid dengan arsitektur megah ini juga menjadi destinasi wisata religi favorit."
+  }
+];
 
 export default function PeristiwaScreen() {
   return (
@@ -13,64 +39,14 @@ export default function PeristiwaScreen() {
         kota ini:
       </Text>
 
-      <Text style={styles.heading}>
-        1. Pertempuran Lima Hari di Semarang (15–20 Oktober 1945)
-      </Text>
-      <Text style={styles.paragraph}>
-        Salah satu peristiwa heroik yang terjadi setelah Proklamasi Kemerdekaan.
-        Rakyat Semarang bersama pemuda dan tentara Indonesia bertempur melawan
-        tentara Jepang yang masih ada di kota. Pertempuran ini dipicu oleh
-        penangkapan dan pembunuhan dr. Kariadi serta pengambilalihan senjata di
-        berbagai tempat. Pertempuran berlangsung sengit selama lima hari dan
-        dikenang sebagai simbol keberanian rakyat Semarang.
-      </Text>
+      {peristiwaSemarang.map((item, index) => (
+        <View key={index}>
+          <Text style={styles.heading}>{`${index + 1}. ${item.name}`}</Text>
+          <Text style={styles.paragraph}>{item.description}</Text>
+        </View>
+      ))}
 
-      <Text style={styles.heading}>
-        2. Pemberontakan PKI 1948 dan Dampaknya di Semarang
-      </Text>
-      <Text style={styles.paragraph}>
-        Meskipun pusat pemberontakan berada di Madiun, dampak dari gerakan ini
-        turut terasa di Semarang. Pemerintah memperketat pengawasan terhadap
-        kelompok-kelompok politik dan ideologi ekstrem. Semarang menjadi salah
-        satu basis penting dalam pengendalian stabilitas politik di Jawa Tengah.
-      </Text>
-
-      <Text style={styles.heading}>3. Demonstrasi Mahasiswa 1998</Text>
-      <Text style={styles.paragraph}>
-        Seperti kota besar lainnya, Semarang turut menjadi lokasi demonstrasi
-        mahasiswa menuntut reformasi dan turunnya Presiden Soeharto. Aksi-aksi
-        damai dilakukan oleh mahasiswa UNDIP, UNNES, dan kampus-kampus lain,
-        yang menyuarakan demokratisasi dan kebebasan berpendapat.
-      </Text>
-
-      <Text style={styles.heading}>4. Banjir Rob Tahunan</Text>
-      <Text style={styles.paragraph}>
-        Banjir rob (air laut pasang) merupakan fenomena tahunan yang cukup
-        sering melanda wilayah pesisir Semarang, terutama di kawasan Kaligawe,
-        Tanjung Mas, dan Genuk. Pemerintah telah melakukan berbagai upaya
-        penanganan seperti pembangunan tanggul laut dan sistem pompa air.
-      </Text>
-
-      <Text style={styles.heading}>
-        5. Rehabilitasi Kota Lama dan Revitalisasi Warisan Sejarah
-      </Text>
-      <Text style={styles.paragraph}>
-        Dalam beberapa tahun terakhir, pemerintah kota dan pusat melakukan
-        proyek besar untuk menghidupkan kembali Kota Lama Semarang. Proyek ini
-        mencakup perbaikan bangunan tua, peningkatan fasilitas pariwisata, serta
-        penataan kawasan agar menjadi ikon sejarah dan budaya.
-      </Text>
-
-      <Text style={styles.heading}>
-        6. Peresmian Masjid Agung Jawa Tengah (2006)
-      </Text>
-      <Text style={styles.paragraph}>
-        Masjid ini menjadi landmark religius sekaligus simbol toleransi dan
-        kebangkitan spiritual masyarakat Semarang. Masjid dengan arsitektur
-        megah ini juga menjadi destinasi wisata religi favorit.
-      </Text>
-
-      <Pressable onPress={() => router.back()} style={styles.buttonBack}>
+      <Pressable onPress={() => router.replace('/eksplor')} style={styles.buttonBack}>
         <Text style={styles.buttonText}>← Kembali</Text>
       </Pressable>
     </ScrollView>

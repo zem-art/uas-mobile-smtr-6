@@ -1,5 +1,28 @@
 import { router } from "expo-router";
-import { Pressable, ScrollView, StyleSheet, Text } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+
+const sejarahSemarang = [
+  {
+    name: "Masa Kerajaan",
+    description: "Pada abad ke-9 hingga ke-10, wilayah Semarang merupakan bagian dari kerajaan-kerajaan Hindu-Buddha di Jawa Tengah seperti Mataram Kuno. Wilayah ini berkembang sebagai daerah agraris dan pelabuhan kecil di pesisir utara Pulau Jawa."
+  },
+  {
+    name: "Masa Islam dan Sunan Kalijaga",
+    description: "Pada abad ke-15, Semarang mulai berkembang sebagai pusat penyebaran agama Islam oleh para Wali Songo, terutama Sunan Kalijaga. Beliau diyakini memiliki peran penting dalam menyebarkan Islam di wilayah pantai utara Jawa dengan pendekatan budaya dan seni."
+  },
+  {
+    name: "Masa Kolonial Belanda",
+    description: "Pada abad ke-17, Belanda mulai menjadikan Semarang sebagai pusat perdagangan dan pemerintahan kolonial. Kota ini berkembang pesat menjadi pusat administrasi, perdagangan, dan transportasi. Banyak bangunan bergaya Eropa dibangun, yang kini menjadi bagian dari kawasan Kota Lama. Pelabuhan Tanjung Emas dan rel kereta api pertama di Indonesia juga dibangun di Semarang."
+  },
+  {
+    name: "Masa Perjuangan Kemerdekaan",
+    description: "Semarang memiliki peran penting dalam perjuangan kemerdekaan Indonesia. Pertempuran lima hari di Semarang pada Oktober 1945 menjadi simbol perlawanan rakyat melawan pasukan Jepang. Peristiwa ini dikenang sebagai tonggak patriotisme warga Semarang."
+  },
+  {
+    name: "Era Modern dan Pembangunan",
+    description: "Seiring perkembangan zaman, Semarang tumbuh menjadi kota metropolitan yang menjadi pusat pemerintahan Provinsi Jawa Tengah. Dengan pembangunan infrastruktur, pariwisata, dan pendidikan, Semarang terus berbenah sebagai kota yang modern tanpa melupakan sejarahnya yang agung."
+  }
+];
 
 export default function SejarahScreen() {
   return (
@@ -13,49 +36,14 @@ export default function SejarahScreen() {
         pada awalnya.
       </Text>
 
-      <Text style={styles.heading}>Masa Kerajaan</Text>
-      <Text style={styles.paragraph}>
-        Pada abad ke-9 hingga ke-10, wilayah Semarang merupakan bagian dari
-        kerajaan-kerajaan Hindu-Buddha di Jawa Tengah seperti Mataram Kuno.
-        Wilayah ini berkembang sebagai daerah agraris dan pelabuhan kecil di
-        pesisir utara Pulau Jawa.
-      </Text>
+      {sejarahSemarang.map((item, index) => (
+        <View key={index}>
+          <Text style={styles.heading}>{item.name}</Text>
+          <Text style={styles.paragraph}>{item.description}</Text>
+        </View>
+      ))}
 
-      <Text style={styles.heading}>Masa Islam dan Sunan Kalijaga</Text>
-      <Text style={styles.paragraph}>
-        Pada abad ke-15, Semarang mulai berkembang sebagai pusat penyebaran
-        agama Islam oleh para Wali Songo, terutama Sunan Kalijaga. Beliau
-        diyakini memiliki peran penting dalam menyebarkan Islam di wilayah
-        pantai utara Jawa dengan pendekatan budaya dan seni.
-      </Text>
-
-      <Text style={styles.heading}>Masa Kolonial Belanda</Text>
-      <Text style={styles.paragraph}>
-        Pada abad ke-17, Belanda mulai menjadikan Semarang sebagai pusat
-        perdagangan dan pemerintahan kolonial. Kota ini berkembang pesat menjadi
-        pusat administrasi, perdagangan, dan transportasi. Banyak bangunan
-        bergaya Eropa dibangun, yang kini menjadi bagian dari kawasan Kota Lama.
-        Pelabuhan Tanjung Emas dan rel kereta api pertama di Indonesia juga
-        dibangun di Semarang.
-      </Text>
-
-      <Text style={styles.heading}>Masa Perjuangan Kemerdekaan</Text>
-      <Text style={styles.paragraph}>
-        Semarang memiliki peran penting dalam perjuangan kemerdekaan Indonesia.
-        Pertempuran lima hari di Semarang pada Oktober 1945 menjadi simbol
-        perlawanan rakyat melawan pasukan Jepang. Peristiwa ini dikenang sebagai
-        tonggak patriotisme warga Semarang.
-      </Text>
-
-      <Text style={styles.heading}>Era Modern dan Pembangunan</Text>
-      <Text style={styles.paragraph}>
-        Seiring perkembangan zaman, Semarang tumbuh menjadi kota metropolitan
-        yang menjadi pusat pemerintahan Provinsi Jawa Tengah. Dengan pembangunan
-        infrastruktur, pariwisata, dan pendidikan, Semarang terus berbenah
-        sebagai kota yang modern tanpa melupakan sejarahnya yang agung.
-      </Text>
-
-      <Pressable onPress={() => router.back()} style={styles.buttonBack}>
+      <Pressable onPress={() => router.replace("/eksplor")} style={styles.buttonBack}>
         <Text style={styles.buttonText}>← Kembali</Text>
       </Pressable>
     </ScrollView>

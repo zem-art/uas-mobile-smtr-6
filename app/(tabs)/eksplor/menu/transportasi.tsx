@@ -1,6 +1,28 @@
-// app/eksplor/transportasi.tsx
 import { router } from "expo-router";
-import { Pressable, ScrollView, StyleSheet, Text } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+
+const transportasiSemarang = [
+  {
+    name: "Bandara Internasional Jenderal Ahmad Yani",
+    description: "Bandara utama yang melayani penerbangan domestik dan internasional, dengan fasilitas modern dan akses mudah dari pusat kota."
+  },
+  {
+    name: "Stasiun Tawang",
+    description: "Stasiun kereta api ikonik yang juga menjadi cagar budaya. Melayani rute ke berbagai kota besar di Pulau Jawa."
+  },
+  {
+    name: "Trans Semarang",
+    description: "Bus Rapid Transit (BRT) yang menjadi andalan warga untuk transportasi dalam kota. Rute-rute tersebar di seluruh penjuru kota."
+  },
+  {
+    name: "Pelabuhan Tanjung Emas",
+    description: "Pelabuhan utama di Semarang yang melayani kapal penumpang dan kargo. Memiliki peran penting dalam perdagangan dan logistik regional."
+  },
+  {
+    name: "Angkutan Umum Tradisional",
+    description: "Beragam angkutan umum seperti angkot, becak, dan ojek online yang memudahkan akses ke berbagai lokasi di kota. Becak wisata juga tersedia untuk tur keliling kota."
+  }
+];
 
 export default function TransportasiScreen() {
   return (
@@ -12,40 +34,14 @@ export default function TransportasiScreen() {
         udara:
       </Text>
 
-      <Text style={styles.heading}>
-        1. Bandara Internasional Jenderal Ahmad Yani
-      </Text>
-      <Text style={styles.paragraph}>
-        Bandara utama yang melayani penerbangan domestik dan internasional,
-        dengan fasilitas modern dan akses mudah dari pusat kota.
-      </Text>
+      {transportasiSemarang.map((item, index) => (
+        <View key={index}>
+          <Text style={styles.heading}>{`${index + 1}. ${item.name}`}</Text>
+          <Text style={styles.paragraph}>{item.description}</Text>
+        </View>
+      ))}
 
-      <Text style={styles.heading}>2. Stasiun Tawang</Text>
-      <Text style={styles.paragraph}>
-        Stasiun kereta api ikonik yang juga menjadi cagar budaya. Melayani rute
-        ke berbagai kota besar di Pulau Jawa.
-      </Text>
-
-      <Text style={styles.heading}>3. Trans Semarang</Text>
-      <Text style={styles.paragraph}>
-        Bus Rapid Transit (BRT) yang menjadi andalan warga untuk transportasi
-        dalam kota. Rute-rute tersebar di seluruh penjuru kota.
-      </Text>
-
-      <Text style={styles.heading}>4. Pelabuhan Tanjung Emas</Text>
-      <Text style={styles.paragraph}>
-        Pelabuhan utama di Semarang yang melayani kapal penumpang dan kargo.
-        Memiliki peran penting dalam perdagangan dan logistik regional.
-      </Text>
-
-      <Text style={styles.heading}>5. Angkutan Umum Tradisional</Text>
-      <Text style={styles.paragraph}>
-        Beragam angkutan umum seperti angkot, becak, dan ojek online yang
-        memudahkan akses ke berbagai lokasi di kota. Becak wisata juga tersedia
-        untuk tur keliling kota.
-      </Text>
-
-      <Pressable onPress={() => router.back()} style={styles.buttonBack}>
+      <Pressable onPress={() => router.replace("/eksplor")} style={styles.buttonBack}>
         <Text style={styles.buttonText}>← Kembali</Text>
       </Pressable>
     </ScrollView>

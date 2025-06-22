@@ -1,6 +1,28 @@
-// app/eksplor/belanja.tsx
 import { router } from "expo-router";
 import { Pressable, ScrollView, StyleSheet, Text } from "react-native";
+
+const pusatBelanja = [
+  {
+    name: "Paragon City Mall",
+    description: "Salah satu mal terbesar di Semarang dengan brand ternama, food court, bioskop, dan hotel bintang lima."
+  },
+  {
+    name: "DP Mall",
+    description: "Mall modern yang terletak strategis di pusat kota, dekat Tugu Muda, dengan tenant fashion dan kuliner yang lengkap."
+  },
+  {
+    name: "Java Mall",
+    description: "Pusat perbelanjaan yang telah lama menjadi favorit warga lokal, dengan banyak pilihan toko dan supermarket besar."
+  },
+  {
+    name: "Pasar Johar",
+    description: "Pasar tradisional legendaris yang telah direvitalisasi. Dikenal sebagai pusat grosir tekstil, batik, dan kuliner lokal."
+  },
+  {
+    name: "Semawis Night Market",
+    description: "Pasar malam yang menawarkan berbagai kuliner khas Semarang, mulai dari lumpia, tahu gimbal, hingga wingko babat."
+  }
+];
 
 export default function BelanjaScreen() {
   return (
@@ -11,37 +33,14 @@ export default function BelanjaScreen() {
         hingga pasar tradisional bersejarah yang patut untuk dikunjungi:
       </Text>
 
-      <Text style={styles.heading}>1. Paragon City Mall</Text>
-      <Text style={styles.paragraph}>
-        Salah satu mal terbesar di Semarang dengan brand ternama, food court,
-        bioskop, dan hotel bintang lima.
-      </Text>
+      {pusatBelanja.map((item, index) => (
+        <ScrollView key={index}>
+          <Text style={styles.heading}>{`${index + 1}. ${item.name}`}</Text>
+          <Text style={styles.paragraph}>{item.description}</Text>
+        </ScrollView>
+      ))}
 
-      <Text style={styles.heading}>2. DP Mall</Text>
-      <Text style={styles.paragraph}>
-        Mall modern yang terletak strategis di pusat kota, dekat Tugu Muda,
-        dengan tenant fashion dan kuliner yang lengkap.
-      </Text>
-
-      <Text style={styles.heading}>3. Java Mall</Text>
-      <Text style={styles.paragraph}>
-        Pusat perbelanjaan yang telah lama menjadi favorit warga lokal, dengan
-        banyak pilihan toko dan supermarket besar.
-      </Text>
-
-      <Text style={styles.heading}>4. Pasar Johar</Text>
-      <Text style={styles.paragraph}>
-        Pasar tradisional legendaris yang telah direvitalisasi. Dikenal sebagai
-        pusat grosir tekstil, batik, dan kuliner lokal.
-      </Text>
-
-      <Text style={styles.heading}>5. Semawis Night Market</Text>
-      <Text style={styles.paragraph}>
-        Pasar malam yang menawarkan berbagai kuliner khas Semarang, mulai dari
-        lumpia, tahu gimbal, hingga wingko babat.
-      </Text>
-
-      <Pressable onPress={() => router.back()} style={styles.buttonBack}>
+      <Pressable onPress={() => router.replace('/eksplor')} style={styles.buttonBack}>
         <Text style={styles.buttonText}>← Kembali</Text>
       </Pressable>
     </ScrollView>

@@ -1,49 +1,46 @@
-// app/eksplor/pendidikan.tsx
 import { router } from "expo-router";
-import { Pressable, ScrollView, StyleSheet, Text } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+
+const pendidikanSemarang = [
+  {
+    name: "Universitas Diponegoro (UNDIP)",
+    description: "Salah satu universitas negeri terbaik di Indonesia dengan berbagai program studi unggulan dan fasilitas modern."
+  },
+  {
+    name: "Universitas Negeri Semarang (UNNES)",
+    description: "Universitas berbasis konservasi yang menawarkan program studi pendidikan dan non-pendidikan dengan fokus pada kelestarian lingkungan."
+  },
+  {
+    name: "Politeknik Negeri Semarang (Polines)",
+    description: "Institusi vokasi unggulan yang fokus pada pengembangan keterampilan teknik dan manajemen untuk kebutuhan industri."
+  },
+  {
+    name: "Sekolah-sekolah Favorit",
+    description: "Beragam sekolah dasar dan menengah unggulan, termasuk sekolah negeri dan swasta berbasis agama dan internasional."
+  },
+  {
+    name: "Lembaga Pendidikan Non-Formal",
+    description: "Banyak lembaga kursus dan pelatihan yang menawarkan program pengembangan diri, bahasa, seni, dan keterampilan teknis untuk segala usia."
+  }
+];
 
 export default function PendidikanScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Pendidikan di Semarang</Text>
+      <Text style={styles.title}>Pendidikan di Jakarta</Text>
       <Text style={styles.paragraph}>
-        Semarang merupakan pusat pendidikan di Jawa Tengah, dengan berbagai
+        Jakarta merupakan pusat pendidikan di Indonesia, dengan berbagai
         institusi pendidikan ternama dari tingkat dasar hingga perguruan tinggi:
       </Text>
 
-      <Text style={styles.heading}>1. Universitas Diponegoro (UNDIP)</Text>
-      <Text style={styles.paragraph}>
-        Salah satu universitas negeri terbaik di Indonesia dengan berbagai
-        program studi unggulan dan fasilitas modern.
-      </Text>
+      {pendidikanSemarang.map((item, index) => (
+        <View key={index}>
+          <Text style={styles.heading}>{`${index + 1}. ${item.name}`}</Text>
+          <Text style={styles.paragraph}>{item.description}</Text>
+        </View>
+      ))}
 
-      <Text style={styles.heading}>2. Universitas Negeri Semarang (UNNES)</Text>
-      <Text style={styles.paragraph}>
-        Universitas berbasis konservasi yang menawarkan program studi pendidikan
-        dan non-pendidikan dengan fokus pada kelestarian lingkungan.
-      </Text>
-
-      <Text style={styles.heading}>
-        3. Politeknik Negeri Semarang (Polines)
-      </Text>
-      <Text style={styles.paragraph}>
-        Institusi vokasi unggulan yang fokus pada pengembangan keterampilan
-        teknik dan manajemen untuk kebutuhan industri.
-      </Text>
-
-      <Text style={styles.heading}>4. Sekolah-sekolah Favorit</Text>
-      <Text style={styles.paragraph}>
-        Beragam sekolah dasar dan menengah unggulan, termasuk sekolah negeri dan
-        swasta berbasis agama dan internasional.
-      </Text>
-
-      <Text style={styles.heading}>5. Lembaga Pendidikan Non-Formal</Text>
-      <Text style={styles.paragraph}>
-        Banyak lembaga kursus dan pelatihan yang menawarkan program pengembangan
-        diri, bahasa, seni, dan keterampilan teknis untuk segala usia.
-      </Text>
-
-      <Pressable onPress={() => router.back()} style={styles.buttonBack}>
+      <Pressable onPress={() => router.replace('/eksplor')} style={styles.buttonBack}>
         <Text style={styles.buttonText}>← Kembali</Text>
       </Pressable>
     </ScrollView>
@@ -73,7 +70,6 @@ const styles = StyleSheet.create({
     color: "#555",
     lineHeight: 22,
   },
-
   buttonBack: {
     marginTop: 32,
     backgroundColor: "#2563EB",

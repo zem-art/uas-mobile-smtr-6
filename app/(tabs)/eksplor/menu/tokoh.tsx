@@ -1,6 +1,28 @@
-// app/eksplor/tokoh.tsx
 import { router } from "expo-router";
-import { Pressable, ScrollView, StyleSheet, Text } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+
+const tokohSemarang = [
+  {
+    name: "R.A. Kartini",
+    description: "Meski lahir di Jepara, Kartini pernah belajar di Semarang dan menjadi simbol emansipasi perempuan Indonesia melalui pemikirannya yang maju."
+  },
+  {
+    name: "Imam Bonjol",
+    description: "Pahlawan nasional yang pernah diasingkan ke Semarang oleh Belanda. Namanya diabadikan sebagai nama jalan dan bangunan."
+  },
+  {
+    name: "Haji Agus Salim",
+    description: "Diplomat ulung dan tokoh pergerakan yang sempat aktif di wilayah Semarang dalam kegiatan jurnalistik dan organisasi Islam modern."
+  },
+  {
+    name: "Ki Narto Sabdo",
+    description: "Maestro seni pedalangan dan musik Jawa asal Semarang yang turut mempopulerkan wayang golek dan langgam Jawa secara nasional."
+  },
+  {
+    name: "Soegijapranata",
+    description: "Uskup pertama Indonesia yang berasal dari Semarang, dikenal sebagai tokoh toleransi antarumat beragama dan pejuang kemerdekaan."
+  }
+];
 
 export default function TokohScreen() {
   return (
@@ -12,36 +34,14 @@ export default function TokohScreen() {
         nasional dan budaya:
       </Text>
 
-      <Text style={styles.heading}>1. R.A. Kartini</Text>
-      <Text style={styles.paragraph}>
-        Meski lahir di Jepara, Kartini pernah belajar di Semarang dan menjadi
-        simbol emansipasi perempuan Indonesia melalui pemikirannya yang maju.
-      </Text>
+      {tokohSemarang.map((item, index) => (
+        <View key={index}>
+          <Text style={styles.heading}>{`${index + 1}. ${item.name}`}</Text>
+          <Text style={styles.paragraph}>{item.description}</Text>
+        </View>
+      ))}
 
-      <Text style={styles.heading}>2. Imam Bonjol</Text>
-      <Text style={styles.paragraph}>
-        Pahlawan nasional yang pernah diasingkan ke Semarang oleh Belanda.
-        Namanya diabadikan sebagai nama jalan dan bangunan.
-      </Text>
-
-      <Text style={styles.heading}>3. Haji Agus Salim</Text>
-      <Text style={styles.paragraph}>
-        Diplomat ulung dan tokoh pergerakan yang sempat aktif di wilayah
-        Semarang dalam kegiatan jurnalistik dan organisasi Islam modern.
-      </Text>
-
-      <Text style={styles.heading}>4. Ki Narto Sabdo</Text>
-      <Text style={styles.paragraph}>
-        Maestro seni pedalangan dan musik Jawa asal Semarang yang turut
-        mempopulerkan wayang golek dan langgam Jawa secara nasional.
-      </Text>
-
-      <Text style={styles.heading}>5. Soegijapranata</Text>
-      <Text style={styles.paragraph}>
-        Uskup pertama Indonesia yang berasal dari Semarang, dikenal sebagai
-        tokoh toleransi antarumat beragama dan pejuang kemerdekaan.
-      </Text>
-      <Pressable onPress={() => router.back()} style={styles.buttonBack}>
+      <Pressable onPress={() => router.replace("/eksplor")} style={styles.buttonBack}>
         <Text style={styles.buttonText}>← Kembali</Text>
       </Pressable>
     </ScrollView>
