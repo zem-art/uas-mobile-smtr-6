@@ -8,7 +8,7 @@
     "url": "https://mzaimzufar.my.id"
   },
   "scripts": {
-    "eas-build-pre-install" : "node scripts/use-npm.js",
+    "preinstall" : "node scripts/use-npm.js",
     "start": "expo start",
     "start:cache": "expo start -c",
     "reset-project": "node ./scripts/reset-project.js",
