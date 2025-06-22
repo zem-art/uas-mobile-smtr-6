@@ -18,7 +18,8 @@
     "build:development": "eas build --platform android --profile development",
     "build:preview": "eas build --platform android --profile preview",
     "create:branch:preview": "eas branch:create preview",
-    "create:branch:prod": "eas branch:create production"
+    "create:branch:prod": "eas branch:create production",
+    "delete:node_module": "rm -rf node_modules pnpm-lock.yaml"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
@@ -60,5 +61,5 @@
     "typescript": "^5.3.3"
   },
   "private": true,
-  "packageManager": "pnpm@8.15.9"
+  "packageManager": "pnpm@10.11.1"
 }
