@@ -7,9 +7,10 @@ import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Alert, Animated, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function SignUp() {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
   const scaleAnimSignup = useRef(new Animated.Value(1)).current;
   const scaleAnimSignin = useRef(new Animated.Value(1)).current;
@@ -28,30 +29,31 @@ export default function SignUp() {
     initialize();
   }, []);
 
-  const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+  const validateUsername = (username: string) => {
+    // Minimal 3 karakter, hanya huruf, angka, dan underscore
+    const usernameRegex = /^[a-zA-Z0-9_]{3,}$/;
+    return usernameRegex.test(username);
   };
 
   const handleSignUp = async () => {
-    if (!email || !password) {
+    if (!username || !password) {
       Alert.alert('Error', 'Harap isi semua kolom');
       return;
     }
 
-    if (!validateEmail(email)) {
-      Alert.alert('Error', 'Format email tidak valid');
+    if (!validateUsername(username)) {
+      Alert.alert('Error', 'Username tidak valid (minimal 3 karakter, hanya huruf, angka, atau underscore)');
       return;
     }
 
     setIsLoading(true);
     try {
-      await insertUser(email, password);
+      await insertUser(username, password); // Ganti dengan username di db
       Alert.alert('Sukses', 'Registrasi berhasil');
       router.replace('/(auth)/signin');
     } catch (error) {
       console.error('SignUp error:', error);
-      Alert.alert('Error', 'Gagal mendaftar. Email mungkin sudah digunakan atau terjadi kesalahan lain.');
+      Alert.alert('Error', 'Gagal mendaftar. Username mungkin sudah digunakan atau terjadi kesalahan lain.');
     } finally {
       setIsLoading(false);
     }
@@ -87,13 +89,12 @@ export default function SignUp() {
       </TouchableOpacity>
       <Text style={styles.title}>Daftar Akun</Text>
       <View style={styles.inputContainer}>
-        <IconSymbol lib="Feather" name="mail" size={20} color="#666" style={styles.inputIcon} />
+        <IconSymbol lib="Feather" name="user" size={20} color="#666" style={styles.inputIcon} />
         <TextInput
-          placeholder="Email"
+          placeholder="Username"
           style={styles.input}
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
+          value={username}
+          onChangeText={setUsername}
           autoCapitalize="none"
           placeholderTextColor="#999"
         />
@@ -103,11 +104,19 @@ export default function SignUp() {
         <TextInput
           placeholder="Password"
           style={styles.input}
-          secureTextEntry
+          secureTextEntry={!showPassword}
           value={password}
           onChangeText={setPassword}
           placeholderTextColor="#999"
         />
+        <TouchableOpacity onPress={() => setShowPassword(!showPassword)} style={styles.eyeButton}>
+          <IconSymbol
+            lib="Feather"
+            name={showPassword ? "eye-off" : "eye"}
+            size={20}
+            color="#666"
+          />
+        </TouchableOpacity>
       </View>
       <View style={styles.buttonGroup}>
         {isLoading ? (
@@ -175,6 +184,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     borderWidth: 1,
     borderColor: '#ddd',
+    width: '100%',
   },
   inputIcon: {
     marginRight: 10,
@@ -185,14 +195,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#333',
   },
+  eyeButton: {
+    padding: 10,
+  },
   buttonGroup: {
     flexDirection: 'row',
-    width : "100%"
+    width: '100%',
   },
   button: {
-        flexDirection: 'row',
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent : "center",
+    justifyContent: 'center',
     backgroundColor: Colors.primary,
     borderRadius: 10,
     width : "85%",

@@ -12,7 +12,7 @@ export const initDB = async () => {
   try {
     await db.execAsync(`CREATE TABLE IF NOT EXISTS users (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      email TEXT NOT NULL,
+      username TEXT NOT NULL,
       password TEXT NOT NULL
     );`);
     console.log('Database initialized successfully');
@@ -23,12 +23,12 @@ export const initDB = async () => {
 };
 
 // Menyisipkan pengguna baru
-export const insertUser = async (email: string, password: string) => {
+export const insertUser = async (username: string, password: string) => {
   const db = await dbPromise;
   try {
     await db.runAsync(
-      'INSERT INTO users (email, password) VALUES (?, ?)',
-      [email, password]
+      'INSERT INTO users (username, password) VALUES (?, ?)',
+      [username, password]
     );
     console.log('User inserted successfully');
   } catch (error) {
@@ -37,15 +37,15 @@ export const insertUser = async (email: string, password: string) => {
   }
 };
 
-// Mengambil pengguna berdasarkan email
-export const getUserByEmail = async (email: string): Promise<{ id: number; email: string; password: string } | null> => {
+// Mengambil pengguna berdasarkan username
+export const getUserByEmail = async (username: string): Promise<{ id: number; username: string; password: string } | null> => {
   const db = await dbPromise;
   try {
     const result = await db.getAllAsync(
-      'SELECT * FROM users WHERE email = ?',
-      [email]
+      'SELECT * FROM users WHERE username = ?',
+      [username]
     );
-    return result[0] as { id: number; email: string; password: string } | null;
+    return result[0] as { id: number; username: string; password: string } | null;
   } catch (error) {
     console.error('Error fetching user:', error);
     return null;

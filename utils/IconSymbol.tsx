@@ -47,7 +47,11 @@ const IconMap = {
     info : "info",
     "log-in" : "log-in",
     "arrow-left" : "arrow-left",
-    "user-plus" : "user-plus"
+    "user-plus" : "user-plus",
+    "eye-off" : "eye-off",
+    "eye" : "eye",
+    user : "user",
+    lock : "lock",
   },
   Entypo : {
     lightMode : 'light-up'
