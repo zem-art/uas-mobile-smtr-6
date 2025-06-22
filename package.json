@@ -7,7 +7,6 @@
     "email": "support@boba.com",
     "url": "https://mzaimzufar.my.id"
   },
-  "packageManager": "pnpm@10.11.1",
   "scripts": {
     "prebuild" : "node scripts/use-npm.js",
     "start": "expo start",
