@@ -1,11 +1,13 @@
 import { Colors } from '@/utils/Colors';
 import { useRouter } from 'expo-router';
+import { useState } from 'react';
 import {
   ImageBackground,
   Pressable,
   ScrollView,
   StyleSheet,
   Text,
+  TextInput,
   View,
 } from 'react-native';
 
@@ -18,25 +20,40 @@ const topics = [
   { key: 'religi', title: 'Wisata Religi', image: require('@/assets/images/eksplor/wisata-religi.webp') },
   { key: 'alam', title: 'Wisata Alam', image: require('@/assets/images/eksplor/wisata-alam.webp') },
   { key: 'belanja', title: 'Pusat Belanja', image: require('@/assets/images/eksplor/pusat-belanja.jpeg') },
-  { key: 'event', title: 'Festival & Acara', image: require('@/assets/images/eksplor/festifal.jpg')  },
-  { key: 'pendidikan', title: 'Pendidikan', image: require('@/assets/images/eksplor/pendidikan.jpg')  },
-  { key: 'transportasi', title: 'Transportasi', image: require('@/assets/images/eksplor/transportasi.jpg')  },
-  { key: 'tokoh', title: 'Tokoh Penting', image: require('@/assets/images/eksplor/tokoh.jpeg')  },
+  { key: 'event', title: 'Festival & Acara', image: require('@/assets/images/eksplor/festifal.jpg') },
+  { key: 'pendidikan', title: 'Pendidikan', image: require('@/assets/images/eksplor/pendidikan.jpg') },
+  { key: 'transportasi', title: 'Transportasi', image: require('@/assets/images/eksplor/transportasi.jpg') },
+  { key: 'tokoh', title: 'Tokoh Penting', image: require('@/assets/images/eksplor/tokoh.jpeg') },
 ];
 
 export default function EksplorPage() {
   const router = useRouter();
+  const [search, setSearch] = useState('');
+
+  const filteredTopics = topics.filter(({ title }) =>
+    title.toLowerCase().includes(search.toLowerCase())
+  );
+
   const navTo = (path: string) => () => router.push(`/eksplor/menu/${path}`);
 
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.container}>
         <Text style={styles.title}>Eksplor Kota Semarang</Text>
+
+        <TextInput
+          placeholder="Cari topik seperti: budaya, wisata..."
+          value={search}
+          onChangeText={setSearch}
+          style={styles.input}
+          placeholderTextColor="#999"
+        />
+
         <View style={styles.grid}>
-          {topics.map(({ key, title, image }) => (
+          {filteredTopics.map(({ key, title, image }) => (
             <Pressable key={key} onPress={navTo(key)} style={styles.cardWrapper}>
               <ImageBackground
-                source={image ? image : require('@/assets/images/no-image.png')}
+                source={image}
                 style={styles.card}
                 imageStyle={styles.image}
               >
@@ -46,6 +63,10 @@ export default function EksplorPage() {
               </ImageBackground>
             </Pressable>
           ))}
+
+          {filteredTopics.length === 0 && (
+            <Text style={styles.notFound}>Topik tidak ditemukan.</Text>
+          )}
         </View>
       </View>
     </ScrollView>
@@ -64,9 +85,18 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 12,
     textAlign: 'center',
     color: Colors.primary,
+  },
+  input: {
+    backgroundColor: '#fff',
+    padding: 12,
+    borderRadius: 10,
+    fontSize: 16,
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: '#ccc',
   },
   grid: {
     flexDirection: 'row',
@@ -79,8 +109,8 @@ const styles = StyleSheet.create({
     marginBottom: 25,
     borderRadius: 12,
     overflow: 'hidden',
-    elevation: 4,
     backgroundColor: Colors.drakGray,
+    elevation: 4,
   },
   card: {
     flex: 1,
@@ -97,5 +127,12 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  notFound: {
+    width: '100%',
+    textAlign: 'center',
+    fontSize: 16,
+    color: '#999',
+    marginTop: 20,
   },
 });
