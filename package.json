@@ -2,6 +2,11 @@
   "name": "my-app-profile",
   "main": "expo-router/entry",
   "version": "1.0.0",
+  "author": {
+    "name": "zem-art",
+    "email": "support@boba.com",
+    "url": "https://mzaimzufar.my.id"
+  },
   "scripts": {
     "start": "expo start",
     "start:cache": "expo start -c",

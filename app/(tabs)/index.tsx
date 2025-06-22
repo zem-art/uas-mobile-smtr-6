@@ -1,16 +1,23 @@
 import { Colors } from "@/utils/Colors";
 import { IconSymbol } from "@/utils/IconSymbol";
-import { LinearGradient } from 'expo-linear-gradient';
+import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
-import { useRef } from "react";
-import { Animated, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useEffect, useRef } from "react";
+import {
+  Animated,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 export default function HomePage() {
   const router = useRouter();
   const scaleAnim1 = useRef(new Animated.Value(1)).current;
   const scaleAnim2 = useRef(new Animated.Value(1)).current;
 
-  const handlePressIn = (scaleAnim:any) => {
+  const handlePressIn = (scaleAnim: any) => {
     Animated.spring(scaleAnim, {
       toValue: 0.95,
       friction: 5,
@@ -18,7 +25,7 @@ export default function HomePage() {
     }).start();
   };
 
-  const handlePressOut = (scaleAnim:any) => {
+  const handlePressOut = (scaleAnim: any) => {
     Animated.spring(scaleAnim, {
       toValue: 1,
       friction: 5,
@@ -26,11 +33,42 @@ export default function HomePage() {
     }).start();
   };
 
+  const blinkAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(blinkAnim, {
+          toValue: 1,
+          duration: 600,
+          useNativeDriver: false,
+        }),
+        Animated.timing(blinkAnim, {
+          toValue: 0,
+          duration: 600,
+          useNativeDriver: false,
+        }),
+      ])
+    ).start();
+  }, []);
+
+  const blinkingColor = blinkAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: [Colors.background, Colors.blue], // dari putih ke merah
+  });
+
+
   return (
     <LinearGradient
       colors={["#4c669f", "#3b5998", "#192f6a"]}
       style={styles.container}
     >
+      <Animated.View style={[styles.loginButton, { backgroundColor: blinkingColor, borderRadius: 10, padding: 5 }]}>
+        <TouchableOpacity onPress={() => router.push("/(auth)/signin")}>
+          <IconSymbol lib="Feather" name="log-in" size={24} color="#000" />
+        </TouchableOpacity>
+      </Animated.View>
+
       <Image
         source={require("@/assets/images/lambang_Kota_Semarang.png")}
         style={styles.logo}
@@ -49,7 +87,13 @@ export default function HomePage() {
             onPressOut={() => handlePressOut(scaleAnim1)}
             onPress={() => router.replace("/eksplor/profile")}
           >
-            <IconSymbol lib="Feather" name="info" size={20} color={Colors.background} style={{ marginRight : 10 }} />
+            <IconSymbol
+              lib="Feather"
+              name="info"
+              size={20}
+              color={Colors.background}
+              style={{ marginRight: 10 }}
+            />
             <Text style={styles.buttonText}>Lihat Detail</Text>
           </TouchableOpacity>
         </Animated.View>
@@ -60,7 +104,13 @@ export default function HomePage() {
             onPressOut={() => handlePressOut(scaleAnim2)}
             onPress={() => router.replace("/eksplor")}
           >
-            <IconSymbol lib="FontAwesome6" name="wpexplorer" size={19} color={Colors.background} style={{ marginRight : 10 }} />
+            <IconSymbol
+              lib="FontAwesome6"
+              name="wpexplorer"
+              size={19}
+              color={Colors.background}
+              style={{ marginRight: 10 }}
+            />
             <Text style={styles.buttonText}>Eksplor Destinasi</Text>
           </TouchableOpacity>
         </Animated.View>
@@ -75,6 +125,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     alignItems: "center",
     justifyContent: "center",
+  },
+  loginButton: {
+    position: "absolute",
+    top: 40,
+    right: 15,
+    zIndex: 10,
   },
   logo: {
     width: 120,
