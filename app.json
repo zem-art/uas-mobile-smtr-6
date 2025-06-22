@@ -35,7 +35,9 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-font",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true
@@ -45,7 +47,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": "c8e8ca37-ec40-4243-b7bf-e44d1cf0ade7"
+        "projectId": "5bfa01e4-ab28-4dc7-a049-8fbae451e950"
       }
     },
     "owner": "learning_apps"
