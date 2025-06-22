@@ -6,22 +6,13 @@
   "build": {
     "development": {
       "developmentClient": true,
-      "distribution": "internal",
-      "hooks": {
-        "pre-install": "node scripts/use-npm.js"
-      }
+      "distribution": "internal"
     },
     "preview": {
       "distribution": "internal",
-      "hooks": {
-        "pre-install": "node scripts/use-npm.js"
-      }
     },
     "production": {
-      "autoIncrement": true,
-      "hooks": {
-        "pre-install": "node scripts/use-npm.js"
-      }
+      "autoIncrement": true
     }
   },
   "submit": {
