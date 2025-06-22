@@ -9,7 +9,10 @@
       "distribution": "internal"
     },
     "preview": {
-      "distribution": "internal"
+      "distribution": "internal",
+      "hooks": {
+        "pre-install": "node scripts/use-npm.js"
+      }
     },
     "production": {
       "autoIncrement": true

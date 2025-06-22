@@ -19,7 +19,7 @@
     "build:preview": "eas build --platform android --profile preview --clear-cache",
     "create:branch:preview": "eas branch:create preview",
     "create:branch:prod": "eas branch:create production",
-    "delete:node_module": "rm -rf node_modules pnpm-lock.yaml"
+    "delete:module": "rm -rf node_modules pnpm-lock.yaml"
   },
   "dependencies": {
     "@babel/runtime": "^7.27.6",
@@ -36,6 +36,8 @@
     "expo-image": "~2.3.0",
     "expo-linear-gradient": "~14.0.2",
     "expo-linking": "~7.0.2",
+    "expo-modules-autolinking": "^2.1.12",
+    "expo-modules-core": "^2.4.0",
     "expo-router": "~4.0.17",
     "expo-splash-screen": "~0.29.10",
     "expo-sqlite": "~15.1.4",
@@ -61,6 +63,5 @@
     "eslint-config-expo": "~9.2.0",
     "typescript": "^5.3.3"
   },
-  "private": true,
-  "packageManager": "pnpm@10.11.1"
+  "private": true
 }

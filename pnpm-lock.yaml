@@ -50,6 +50,12 @@ importers:
       expo-linking:
         specifier: ~7.0.2
         version: 7.0.5(expo@52.0.46(@babel/core@7.27.4)(@babel/preset-env@7.27.2(@babel/core@7.27.4))(@expo/metro-runtime@4.0.1(react-native@0.76.2(@babel/core@7.27.4)(@babel/preset-env@7.27.2(@babel/core@7.27.4))(@types/react@18.3.23)(react@18.3.1)))(react-native-webview@13.12.2(react-native@0.76.2(@babel/core@7.27.4)(@babel/preset-env@7.27.2(@babel/core@7.27.4))(@types/react@18.3.23)(react@18.3.1))(react@18.3.1))(react-native@0.76.2(@babel/core@7.27.4)(@babel/preset-env@7.27.2(@babel/core@7.27.4))(@types/react@18.3.23)(react@18.3.1))(react@18.3.1))(react-native@0.76.2(@babel/core@7.27.4)(@babel/preset-env@7.27.2(@babel/core@7.27.4))(@types/react@18.3.23)(react@18.3.1))(react@18.3.1)
+      expo-modules-autolinking:
+        specifier: ^2.1.12
+        version: 2.1.12
+      expo-modules-core:
+        specifier: ^2.4.0
+        version: 2.4.0
       expo-router:
         specifier: ~4.0.17
         version: 4.0.21(2a6a26905c55f2388afb3ae30291f169)
@@ -2415,8 +2421,15 @@ packages:
     resolution: {integrity: sha512-DezgnEYFQYic8hKGhkbztBA3QUmSftjaNDIKNAtS2iGJmzCcNIkatjN2slFDSWjSTNo8gOvPQyMKfyHWFvLpOQ==}
     hasBin: true
 
+  expo-modules-autolinking@2.1.12:
+    resolution: {integrity: sha512-rW5YSW66pUx1nLqn7TO0eWRnP4LDvySW1Tom0wjexk3Tx/upg9LYE5tva7p5AX/cdFfiZcEqPcOxP4RyT++Xlg==}
+    hasBin: true
+
   expo-modules-core@2.2.3:
     resolution: {integrity: sha512-01QqZzpP/wWlxnNly4G06MsOBUTbMDj02DQigZoXfDh80vd/rk3/uVXqnZgOdLSggTs6DnvOgAUy0H2q30XdUg==}
+
+  expo-modules-core@2.4.0:
+    resolution: {integrity: sha512-Ko5eHBdvuMykjw9P9C9PF54/wBSsGOxaOjx92I5BwgKvEmUwN3UrXFV4CXzlLVbLfSYUQaLcB220xmPfgvT7Fg==}
 
   expo-router@4.0.21:
     resolution: {integrity: sha512-z1U9cGZbgL+ZSHp533VMobOqdkUpFBlDXBpd9/JH+Q0wW49is0G2PrJVUYMzdwr30HSUltdO/19W8rRwjfOnFw==}
@@ -7806,7 +7819,21 @@ snapshots:
       require-from-string: 2.0.2
       resolve-from: 5.0.0
 
+  expo-modules-autolinking@2.1.12:
+    dependencies:
+      '@expo/spawn-async': 1.7.2
+      chalk: 4.1.2
+      commander: 7.2.0
+      find-up: 5.0.0
+      glob: 10.4.5
+      require-from-string: 2.0.2
+      resolve-from: 5.0.0
+
   expo-modules-core@2.2.3:
+    dependencies:
+      invariant: 2.2.4
+
+  expo-modules-core@2.4.0:
     dependencies:
       invariant: 2.2.4
 
