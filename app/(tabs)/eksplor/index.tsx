@@ -34,7 +34,7 @@ export default function EksplorPage() {
     title.toLowerCase().includes(search.toLowerCase())
   );
 
-  const navTo = (path: string) => () => router.push(`/eksplor/menu/${path}`);
+  const navTo = (path: string) => () => router.replace(`/eksplor/menu/${path}`);
 
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>

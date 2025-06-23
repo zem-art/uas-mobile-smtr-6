@@ -1,0 +1,33 @@
+{
+  "cli": {
+    "version": ">= 16.6.1",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "EAS_BUILD_NPM": "true",
+        "COREPACK_ENABLE": "0"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "env": {
+        "EAS_BUILD_NPM": "true",
+        "COREPACK_ENABLE": "0"
+      }
+    },
+    "production": {
+      "autoIncrement": true,
+      "env": {
+        "EAS_BUILD_NPM": "true",
+        "COREPACK_ENABLE": "0"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

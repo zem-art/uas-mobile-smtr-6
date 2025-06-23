@@ -1,6 +1,28 @@
-// app/eksplor/religi.tsx
 import { router } from "expo-router";
-import { Pressable, ScrollView, StyleSheet, Text } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+
+const wisataReligiSemarang = [
+  {
+    name: "Sam Poo Kong",
+    description: "Klenteng bersejarah tempat persinggahan Laksamana Cheng Ho yang terkenal, mencerminkan akulturasi budaya Tionghoa dan Jawa."
+  },
+  {
+    name: "Masjid Agung Jawa Tengah",
+    description: "Masjid megah dengan arsitektur perpaduan Jawa, Arab, dan Romawi. Memiliki payung raksasa otomatis seperti di Masjid Nabawi."
+  },
+  {
+    name: "Gereja Blenduk",
+    description: "Gereja Kristen tertua di Jawa Tengah, bergaya arsitektur Eropa klasik dengan kubah besar ikonik."
+  },
+  {
+    name: "Klenteng Tay Kak Sie",
+    description: "Klenteng tua di Pecinan Semarang yang masih aktif digunakan dan menjadi pusat budaya Tionghoa di kota ini."
+  },
+  {
+    name: "Vihara Buddhagaya Watugong",
+    description: "Vihara terbesar di Jawa Tengah dengan patung Buddha raksasa dan arsitektur yang megah, menjadi pusat kegiatan keagamaan umat Buddha."
+  }
+];
 
 export default function ReligiScreen() {
   return (
@@ -12,36 +34,14 @@ export default function ReligiScreen() {
         yang wajib dikunjungi:
       </Text>
 
-      <Text style={styles.heading}>1. Sam Poo Kong</Text>
-      <Text style={styles.paragraph}>
-        Klenteng bersejarah tempat persinggahan Laksamana Cheng Ho yang
-        terkenal, mencerminkan akulturasi budaya Tionghoa dan Jawa.
-      </Text>
+      {wisataReligiSemarang.map((item, index) => (
+        <View key={index}>
+          <Text style={styles.heading}>{`${index + 1}. ${item.name}`}</Text>
+          <Text style={styles.paragraph}>{item.description}</Text>
+        </View>
+      ))}
 
-      <Text style={styles.heading}>2. Masjid Agung Jawa Tengah</Text>
-      <Text style={styles.paragraph}>
-        Masjid megah dengan arsitektur perpaduan Jawa, Arab, dan Romawi.
-        Memiliki payung raksasa otomatis seperti di Masjid Nabawi.
-      </Text>
-
-      <Text style={styles.heading}>3. Gereja Blenduk</Text>
-      <Text style={styles.paragraph}>
-        Gereja Kristen tertua di Jawa Tengah, bergaya arsitektur Eropa klasik
-        dengan kubah besar ikonik.
-      </Text>
-
-      <Text style={styles.heading}>4. Klenteng Tay Kak Sie</Text>
-      <Text style={styles.paragraph}>
-        Klenteng tua di Pecinan Semarang yang masih aktif digunakan dan menjadi
-        pusat budaya Tionghoa di kota ini.
-      </Text>
-
-      <Text style={styles.heading}>5. Vihara Buddhagaya Watugong</Text>
-      <Text style={styles.paragraph}>
-        Vihara terbesar di Jawa Tengah dengan patung Buddha raksasa dan
-        arsitektur yang megah, menjadi pusat kegiatan keagamaan umat Buddha.
-      </Text>
-      <Pressable onPress={() => router.back()} style={styles.buttonBack}>
+      <Pressable onPress={() => router.replace("/eksplor")} style={styles.buttonBack}>
         <Text style={styles.buttonText}>← Kembali</Text>
       </Pressable>
     </ScrollView>
@@ -71,7 +71,6 @@ const styles = StyleSheet.create({
     color: "#555",
     lineHeight: 22,
   },
-
   buttonBack: {
     marginTop: 32,
     backgroundColor: "#2563EB",

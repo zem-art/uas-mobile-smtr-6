@@ -1,6 +1,24 @@
-// app/eksplor/event.tsx
 import { router } from "expo-router";
 import { Pressable, ScrollView, StyleSheet, Text } from "react-native";
+
+const festivalSemarang = [
+  {
+    name: "Festival Dugderan",
+    description: "Festival tradisional yang digelar menjelang bulan Ramadan, ditandai dengan arak-arakan Warak Ngendog dan pasar rakyat."
+  },
+  {
+    name: "Semarang Night Carnival",
+    description: "Parade malam spektakuler dengan kostum-kostum unik dari berbagai komunitas seni yang memeriahkan kota setiap tahunnya."
+  },
+  {
+    name: "Festival Kota Lama",
+    description: "Rangkaian acara budaya yang menyoroti sejarah dan arsitektur Kota Lama, termasuk pertunjukan musik, seni, dan bazar UMKM."
+  },
+  {
+    name: "Semarang Great Sale",
+    description: "Event diskon besar-besaran yang diikuti oleh pusat perbelanjaan dan UMKM untuk menarik wisatawan dan meningkatkan perekonomian lokal."
+  }
+];
 
 export default function EventScreen() {
   return (
@@ -11,29 +29,12 @@ export default function EventScreen() {
         kekayaan budaya dan keberagaman masyarakatnya:
       </Text>
 
-      <Text style={styles.heading}>1. Festival Dugderan</Text>
-      <Text style={styles.paragraph}>
-        Festival tradisional yang digelar menjelang bulan Ramadan, ditandai
-        dengan arak-arakan Warak Ngendog dan pasar rakyat.
-      </Text>
-
-      <Text style={styles.heading}>2. Semarang Night Carnival</Text>
-      <Text style={styles.paragraph}>
-        Parade malam spektakuler dengan kostum-kostum unik dari berbagai
-        komunitas seni yang memeriahkan kota setiap tahunnya.
-      </Text>
-
-      <Text style={styles.heading}>3. Festival Kota Lama</Text>
-      <Text style={styles.paragraph}>
-        Rangkaian acara budaya yang menyoroti sejarah dan arsitektur Kota Lama,
-        termasuk pertunjukan musik, seni, dan bazar UMKM.
-      </Text>
-
-      <Text style={styles.heading}>4. Semarang Great Sale</Text>
-      <Text style={styles.paragraph}>
-        Event diskon besar-besaran yang diikuti oleh pusat perbelanjaan dan UMKM
-        untuk menarik wisatawan dan meningkatkan perekonomian lokal.
-      </Text>
+      {festivalSemarang.map((item, index) => (
+        <ScrollView key={index}>
+          <Text style={styles.heading}>{`${index + 1}. ${item.name}`}</Text>
+          <Text style={styles.paragraph}>{item.description}</Text>
+        </ScrollView>
+      ))}
 
       <Pressable onPress={() => router.back()} style={styles.buttonBack}>
         <Text style={styles.buttonText}>← Kembali</Text>

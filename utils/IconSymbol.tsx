@@ -44,7 +44,14 @@ const IconMap = {
     plus: 'plus',
     filter: 'filter',
     book_open : "book-open",
-    info : "info"
+    info : "info",
+    "log-in" : "log-in",
+    "arrow-left" : "arrow-left",
+    "user-plus" : "user-plus",
+    "eye-off" : "eye-off",
+    "eye" : "eye",
+    user : "user",
+    lock : "lock",
   },
   Entypo : {
     lightMode : 'light-up'
